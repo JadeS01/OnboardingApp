@@ -18,39 +18,15 @@ const Form = () => {
         user_zip: ''
     })
 
-    // username: '',
-    //     password: '',
-    //     email: '',
-    //     firstName: '',
-    //     lastName: '',
-    //     telephone: '',
-    //     street: '',
-    //     city: '',
-    //     state: '',
-    //     zip: ''
-        // user_name: '',
-        // user_pw: '',
-        // user_email: '',
-        // user_first: '',
-        // user_last: '',
-        // user_phone: '',
-        // user_street: '',
-        // user_city: '',
-        // user_state: '',
-        // user_zip: ''
-
     const {user_name, user_pw, user_email, user_first, user_last, user_phone, user_street, user_city, user_state, user_zip} = formData;
-    const onChange = e => {
-        setFormData({...formData, [e.target.name]: e.target.value})
-    }
 
     const handleBack = () => {
         setForm((currForm) => currForm-1);
     }
     const handleSave = async() => {
-        console.log(formData)
         try{
             const body = {user_name, user_pw, user_email, user_first, user_last, user_phone, user_street, user_city, user_state, user_zip};
+            
             const res = await fetch(
                 'http://localhost:5000/form/create',
                 {
@@ -61,27 +37,33 @@ const Form = () => {
                     body: JSON.stringify(body)
                 }
             );
-            setForm((currForm) => currForm+1);
+            if(!res.ok){
+                alert('error')
+            } else {
+                setForm((currForm) => currForm+1);
+            }
         }catch(err){
             console.error(err.message);
         }
     }
 
-    const handleSubmit = async e => {
-        e.preventDefault();
+    const handleSubmit = async()=> {
         try{
-            const body = formData;
+            const body = {user_name, user_pw, user_email, user_first, user_last, user_phone, user_street, user_city, user_state, user_zip};
             const res = await fetch(
-                'http://localhost:5000/form/create',
+                'http://localhost:5000/form/update',
                 {
-                    method: 'POST',
+                    method: 'PUT',
                     headers: {
-                        'Content-type': 'application/json'
+                        'Content-type': 'application/json',
+                        // 'Credentials': 'include'
                     },
+                    withCredentials: 'true',
                     body: JSON.stringify(body)
                 }
             );
-            window.location = '/';
+            setForm((currForm) => currForm+1);
+            // window.location = '/';
         }catch(err){
             console.error(err.message);
         }
@@ -92,8 +74,10 @@ const Form = () => {
             return <Form1 formData={formData} setFormData={setFormData} />;
         } else if(form === 1){
             return <Form2 formData={formData} setFormData={setFormData} />;
-        } else {
+        } else if(form === 2){
             return <Form3 formData={formData} setFormData={setFormData} />;
+        }else{
+            window.location = '/';
         }
     }
 
@@ -109,7 +93,7 @@ const Form = () => {
             <button className='btn btn-danger' onClick={() => handleBack()} disabled={form === 0}>Back</button>
             </div>
             <div className='col-6 text-right'>
-            {form !== 2 ? <button className='btn btn-success' onClick={() => handleSave()}>Save</button> : <a href='/'><button className='btn btn-success' onClick={handleSubmit}>Save</button></a>}       
+            {form === 0 ? <button className='btn btn-success' onClick={() => handleSave()}>Save</button> :  <button className='btn btn-success' onClick={() => handleSubmit()}>Save</button>}    
             </div>
         </div>
         </div>

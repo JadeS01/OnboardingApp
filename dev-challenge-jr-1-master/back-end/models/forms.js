@@ -1,9 +1,14 @@
+const { Pool } = require('pg');
 const Sequelize = require('sequelize');
 const db = require('../db');
 
 const Form = db.define('form', {
+    // user_id: {
+    //     type: Sequelize.INTEGER
+    // },
     user_name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true
     },
     user_pw: {
         type: Sequelize.STRING

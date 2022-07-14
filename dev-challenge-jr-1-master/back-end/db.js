@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 
+// Sequelize('database', 'username', 'password)
 const db = new Sequelize('eka', 'postgres', 'password', {
     host: 'localhost',
     dialect: 'postgres',
