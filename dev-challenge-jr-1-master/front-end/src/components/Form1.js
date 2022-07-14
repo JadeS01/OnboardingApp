@@ -4,9 +4,9 @@ import React from 'react'
 const Form1 = ({formData, setFormData}) => {
   return (
     <div>Form 1
-        <input type='text' placeholder='Username' className='form-control my-3' value={formData.username} onChange={(e) => setFormData({...formData, username: e.target.value})} required/>
-        <input type='password' placeholder='Password' className='form-control my-3' value={formData.password} onChange={(e) => setFormData({...formData, password: e.target.value})} required/>
-        <input type='email' placeholder='Email' className='form-control my-3' value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} required/>
+        <input type='text' placeholder='Username' className='form-control my-3' value={formData.user_name} onChange={(e) => setFormData({...formData, user_name: e.target.value})} required/>
+        <input type='password' placeholder='Password' className='form-control my-3' value={formData.user_pw} onChange={(e) => setFormData({...formData, user_pw: e.target.value})} required/>
+        <input type='email' placeholder='Email' className='form-control my-3' value={formData.user_email} onChange={(e) => setFormData({...formData, user_email: e.target.value})} required/>
     </div>
   )
 }

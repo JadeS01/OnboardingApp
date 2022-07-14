@@ -10,6 +10,7 @@ const db = new Sequelize('eka', 'postgres', 'password', {
         idle: 10000
     }
 });
+
 db.authenticate()
     .then(() => console.log("connected db"))
     .catch(err => console.log(err));
