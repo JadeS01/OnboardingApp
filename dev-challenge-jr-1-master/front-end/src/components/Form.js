@@ -83,14 +83,14 @@ const Form = () => {
 
     
   return (
-    <div className='d-flex mt-5 mb-0'>
+    <div className='d-flex mt-5 mb-0' class='container'>
         {/* form container */}
         <div className='container form-group'>
             <div>{handleDisplay()}</div>
         
         <div className='row'>
             <div className='col-6'>
-            <button className='btn btn-danger' onClick={() => handleBack()} disabled={form === 0}>Back</button>
+            <button className='btn btn-danger' onClick={() => handleBack()} disabled={form < 2}>Back</button>
             </div>
             <div className='col-6 text-right'>
             {form === 0 ? <button className='btn btn-success' onClick={() => handleSave()}>Save</button> :  <button className='btn btn-success' onClick={() => handleSubmit()}>Save</button>}    

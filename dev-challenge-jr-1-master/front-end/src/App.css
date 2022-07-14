@@ -13,6 +13,15 @@
   }
 }
 
+.container {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

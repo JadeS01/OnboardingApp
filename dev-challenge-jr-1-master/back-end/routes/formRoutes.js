@@ -73,6 +73,7 @@ router.put('/update', parser, async(req, res) => {
          else{
             const salt = await bcrypt.genSalt(10); 
             data.user_pw = await bcrypt.hash(data.user_pw, salt)
+            // correct: const dbResponse = await Forms.update(data, {where: {id: req.uid}})
             const dbResponse = await Forms.update(data, {where: {user_name: req.body.user_name}})
             return res.status(200).json({success: true});
          }

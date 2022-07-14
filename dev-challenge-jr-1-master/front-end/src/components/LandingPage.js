@@ -3,10 +3,13 @@ import Form from './Form'
 
 const LandingPage = () => {
   return (
-    <div>LandingPage
-        <a href='/form'>
-            <button className='btn btn-primary'>Onboard</button>
-        </a>
+    <div class='container'>
+      Landing Page
+      <div>
+          <a href='/form'>
+              <button className='btn btn-primary'>Onboard</button>
+          </a>
+      </div>
     </div>
   )
 }
